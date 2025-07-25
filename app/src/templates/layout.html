@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    {% block head %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- tailwindCSSのUIを読み込む -->
+    <link
+      href="{{ url_for('static', filename='output.css') }}"
+      rel="stylesheet"
+    />
+
+    <!-- fontawesomeのUIを読み込む -->
+    <link
+      href="https://use.fontawesome.com/releases/v6.4.0/css/all.css"
+      rel="stylesheet"
+    />
+    <!-- google fontのUIを読み込む -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AlpineJSのUIを読み込む -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+
+    <title>CloudNativeX</title>
+
+    {% endblock head %}
+  </head>
+  {% include '_header.html' %}
+  <body style="font-family: 'Noto Sans JP'">
+    <div class="bg-white h-screen break-all">
+      <div class="flex flex-nowrap">
+        <div class="w-1/5">{% include '_sidebar.html' %}</div>
+        <div class="w-4/5">
+          {% include '_toast.html' %} {% block content %} {% endblock content %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

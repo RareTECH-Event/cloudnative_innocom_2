@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "PutRequest": {
+        "Item": {
+          "user_name": {
+            "S": "Smith"
+          },
+          "password": {
+            "S": "$2b$12$KWTdYXo5Or7Cm9R9r3Uak./K3pOu9RKbJ1smCmg83AzzNqwM9YLwS"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "user_name": {
+            "S": "Johnson"
+          },
+          "password": {
+            "S": "$2b$12$FVOgAQxZ9GWFHhLWS0VQpOdbtsz6QuuEj5dq.a7JujvyzegCHxzDa"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "user_name": {
+            "S": "Williams"
+          },
+          "password": {
+            "S": "$2b$12$z253pE/OpcNnURE8sh8MeuGGs/5WRsVhm3IVA9n.uSZH99Pz88s6e"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "user_name": {
+            "S": "Brown"
+          },
+          "password": {
+            "S": "$2b$12$C1qM2ru.l.VYaXc/bMTFLO.V9eGpvOAvu7PGtqgxZIe8.W3vbCla6"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "user_name": {
+            "S": "Jones"
+          },
+          "password": {
+            "S": "$2b$12$2a9tZmt6neHyHi76dMlFj.Ha5ZvYYqVnqzbZRa.lvbcB39waayfZO"
+          }
+        }
+      }
+    }
+  ]
+}

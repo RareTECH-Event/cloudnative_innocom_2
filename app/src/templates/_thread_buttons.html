@@ -1,0 +1,38 @@
+<div class="icon-buttons flex text-cyan-950">
+  <form
+    action="{{ url_for('thread.thread_likes', thread_id=thread.thread_id) }}"
+    method="POST"
+  >
+    <button type="submit" class="like-button mr-2 text-main">
+      <i
+        class="far fa-heart {% if g.current_user.user_name in thread.likes %}fas{% endif %}"
+      ></i>
+    </button>
+  </form>
+  <!-- いいねの数を表示 -->
+  <span class="mr-4 opacity-50">{{ thread.likes | length }}</span>
+  <form
+    action="{{ url_for('thread.favorite_thread', thread_id=thread.thread_id) }}"
+    method="POST"
+  >
+    <button type="submit" class="bookmark-button mr-4 text-main">
+      <i
+        class="fa-bookmark fa-regular {% if thread.thread_id in g.current_user.favorite_threads %}fa-solid{% endif %}"
+      ></i>
+    </button>
+  </form>
+
+  <!-- ログインユーザーが投稿したスレッドの場合、編集・削除ボタンを表示 -->
+  {% if g.current_user.user_name == thread.user_name %}
+  <button class="edit-button mr-4 text-main" data-thread-id="{{ thread.id }}">
+    <i class="fas fa-edit"></i>
+  </button>
+  <button
+    class="delete-thread-button-wrong mr-4 text-main"
+    data-thread-id="{{ thread.id }}"
+  >
+    <i class="fas fa-trash"></i>
+  </button>
+
+  {% include '_thread_delete_modal.html' %} {% endif %}
+</div>

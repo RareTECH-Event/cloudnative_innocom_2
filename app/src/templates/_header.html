@@ -1,0 +1,25 @@
+<header class="bg-headerColor fixed left-0 right-0 top-0 h-20 z-[1000]">
+  <div class="container mx-auto py-4 items-center justify-between">
+    <div class="flex items-center justify-between">
+      <div>
+        <a
+          href="{{ url_for('root.index_channel')}}"
+          class="text-white font-bold"
+          style="font-family: 'Zen Dots'"
+          >CloudNativeEX
+        </a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a
+          href="{{ url_for('auth.logout') }}"
+          class="bg-headerColor hover:bg-hover text-accent font-medium py-2 px-4 rounded-lg border-accent border-2"
+          >ログアウト</a
+        >
+
+        <h1 class="text-base font-medium text-accent">
+          {{ g.current_user.username }}
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,76 @@
+<div id="deleteThreadModal" class="fixed z-30 inset-0 overflow-y-auto hidden">
+  <div
+    class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center"
+  >
+    <div
+      class="fixed inset-0 bg-gray-500 bg-opacity-75"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:align-middle sm:my-8 sm:max-w-lg sm:w-full sm:p-6"
+    >
+      <button class="w-auto flex justify-end" id="cancelDelete">
+        <i class="fas fa-times-circle text-[#858585]"></i>
+      </button>
+
+      <div class="flex-auto justify-center p-5">
+        <h3 class="text-xl leading-6 font-medium text-main flex justify-center">
+          スレッドを削除しますか？
+        </h3>
+        <p class="mt-2 text-sm text-gray-500 flex justify-center">
+          本当に削除しますか？
+        </p>
+      </div>
+      <div class="m-3 flex justify-center space-x-4">
+        <button
+          type="button"
+          id="cancelDelete"
+          class="inline-flex justify-center rounded-md border-2 border-main shadow-sm px-5 py-2 bg-white text-base font-medium text-main hover:bg-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+        >
+          キャンセル
+        </button>
+        <form
+          action="{{ url_for('thread.thread_delete', thread_id = thread.thread_id) }}"
+          method="POST"
+          class="inline"
+          id="deleteThreadForm"
+        >
+          <button
+            type="submit"
+            class="ml-3 inline-flex justify-center rounded-md border border-transparent shadow-sm px-10 py-2 bg-main text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
+          >
+            削除
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Threadの削除ボタンを押した時に、モーダルを表示する
+  document.addEventListener("DOMContentLoaded", () => {
+    const deleteButtons = document.querySelectorAll(".delete-thread-button");
+    const deleteModal = document.querySelector("#deleteThreadModal");
+    const deleteThreadForm = document.querySelector("#deleteThreadForm");
+    const closeButtons = document.querySelectorAll("#cancelDelete");
+
+    deleteButtons.forEach((deleteButton) => {
+      deleteButton.addEventListener("click", () => {
+        deleteModal.classList.remove("hidden");
+      });
+    });
+
+    closeButtons.forEach((closeButton) => {
+      closeButton.addEventListener("click", () => {
+        deleteModal.classList.add("hidden");
+      });
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === deleteModal) {
+        deleteModal.classList.add("hidden");
+      }
+    });
+  });
+</script>

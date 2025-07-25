@@ -1,0 +1,53 @@
+{
+    "TableName": "threads",
+    "KeySchema": [
+        {
+            "AttributeName": "thread_id",
+            "KeyType": "HASH"
+        },
+        {
+            "AttributeName": "created_at",
+            "KeyType": "RANGE"
+        }
+    ],
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "thread_id",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "created_at",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "channel_id",
+            "AttributeType": "S"
+        }
+    ],
+    "GlobalSecondaryIndexes": [
+        {
+            "IndexName": "threadsGSI",
+            "KeySchema": [
+                {
+                    "AttributeName": "channel_id",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "created_at",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "Projection": {
+                "ProjectionType": "ALL"
+            },
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 5,
+                "WriteCapacityUnits": 5
+            }
+        }
+    ],
+    "ProvisionedThroughput": {
+        "ReadCapacityUnits": 5,
+        "WriteCapacityUnits": 5
+    }
+}

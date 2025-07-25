@@ -1,0 +1,66 @@
+
+name: Deploy to Amazon ECS
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  AWS_REGION: ap-northeast-3
+  ECR_REPOSITORY: flask-chat-app-osaka
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # OIDC認証のために必要
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Decode OIDC Token for Debugging
+        run: |
+          echo "Decoding OIDC Token..."
+          token_url="${ACTIONS_ID_TOKEN_REQUEST_URL}"
+          token=$(curl -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${token_url}" | jq -r '.value')
+          echo "OIDC Token:"
+          echo "${token}" | cut -d. -f2 | base64 --decode | jq .
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::017121236507:role/github-actions-role-osaka # ★★★ 要変更: AWSアカウントIDとIAMロール名
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f app/Dockerfile.prod ./app
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -var="docker_image_url=${{ steps.build-image.outputs.image }}" -no-color
+        working-directory: ./infra
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -var="docker_image_url=${{ steps.build-image.outputs.image }}"
+        working-directory: ./infra

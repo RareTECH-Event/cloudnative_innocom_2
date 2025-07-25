@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  flask-app:
+    container_name: app
+    build:
+      context: ./app
+      dockerfile: Dockerfile.local
+    ports:
+      - "8080:5000"
+    networks:
+      - flask-app
+    volumes:
+      - ./app:/app:cached
+    environment:
+      DB_ENDPOINT: http://dynamodb:8000
+      AWS_REGION: "DUMMY"
+      AWS_ACCESS_KEY_ID: "DUMMY"
+      AWS_SECRET_ACCESS_KEY: "DUMMY"
+      FLASK_DEBUG: "true"
+    depends_on:
+      - dynamodb-setup
+
+  dynamodb:
+    container_name: dynamodb
+    image: amazon/dynamodb-local:latest
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /data"
+    ports:
+      - "8000:8000"
+    networks:
+      - flask-app
+    volumes:
+      - ./.dynamodb-local-data:/data
+
+  dynamodb-setup:
+    image: amazon/aws-cli:2.15.39
+    container_name: dynamodb-setup
+    networks:
+      - flask-app
+    environment:
+      DB_ENDPOINT: http://dynamodb:8000
+      AWS_REGION: "DUMMY"
+      AWS_ACCESS_KEY_ID: "DUMMY"
+      AWS_SECRET_ACCESS_KEY: "DUMMY"
+    volumes:
+      - ./dynamoDB:/dynamoDB
+      - ./init-db.sh:/init-db.sh
+    entrypoint: /bin/sh
+    command: /init-db.sh
+    depends_on:
+      - dynamodb
+
+networks:
+  flask-app:
+    driver: bridge
+
+volumes:
+  dynamodb-local-data: {}

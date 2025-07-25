@@ -1,0 +1,24 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category, message in messages %}
+  {% set bg_color = '' %}
+  {% if category == 'error' %}
+    {% set bg_color = 'bg-red-700' %}
+  {% elif category == 'success' %}
+    {% set bg_color = 'bg-main' %}
+{% endif %}
+<div
+  class="fixed top-36 right-6 z-50 py-2 px-4 text-white rounded-lg shadow-lg {{ bg_color }}"
+  x-data="{ showToast: false, timeout: 2000 }"
+  x-init="setTimeout(() => { showToast = true }, 0); setTimeout(() => { showToast = false }, timeout)"
+  x-show="showToast"
+  x-transition:enter="transition ease-out duration-300"
+  x-transition:enter-start="opacity-0 transform scale-90"
+  x-transition:enter-end="opacity-100 transform scale-100"
+  x-transition:leave="transition ease-in duration-300"
+  x-transition:leave-start="opacity-100 transform scale-100"
+  x-transition:leave-end="opacity-0 transform scale-90"
+>
+  {{ message }}
+</div>
+{% endfor %} {% endif %} {% endwith %}

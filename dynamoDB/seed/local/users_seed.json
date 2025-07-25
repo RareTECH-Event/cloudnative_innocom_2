@@ -1,0 +1,91 @@
+{
+  "users": [
+    {
+      "PutRequest": {
+        "Item": {
+          "user_name": {
+            "S": "user"
+          },
+          "password": {
+            "S": "$2b$12$SUkYptG0NLxyDxFZrQko0u8nu0sFxCw/eJAjtZRRvcK8Efndt8l5K"
+          },
+          "profile_image_url": {
+            "S": "https://via.placeholder.com/150"
+          },
+          "favorite_channels": {
+            "SS": [
+              "4ab0e061-402a-4b9c-95ef-3eb7838bbf07",
+              "25d02915-38e7-4631-967b-1b35396718b4"
+            ]
+          },
+          "favorite_threads": {
+            "SS": [
+              "9beb1538-315c-4591-b9d9-fd12ee7d2efa",
+              "5bc9bd1e-164b-4744-af0e-5765727e856b"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "user_name": {
+            "S": "Smith"
+          },
+          "password": {
+            "S": "$2b$12$KWTdYXo5Or7Cm9R9r3Uak./K3pOu9RKbJ1smCmg83AzzNqwM9YLwS"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "user_name": {
+            "S": "Johnson"
+          },
+          "password": {
+            "S": "$2b$12$FVOgAQxZ9GWFHhLWS0VQpOdbtsz6QuuEj5dq.a7JujvyzegCHxzDa"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "user_name": {
+            "S": "Williams"
+          },
+          "password": {
+            "S": "$2b$12$z253pE/OpcNnURE8sh8MeuGGs/5WRsVhm3IVA9n.uSZH99Pz88s6e"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "user_name": {
+            "S": "Brown"
+          },
+          "password": {
+            "S": "$2b$12$C1qM2ru.l.VYaXc/bMTFLO.V9eGpvOAvu7PGtqgxZIe8.W3vbCla6"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "user_name": {
+            "S": "Jones"
+          },
+          "password": {
+            "S": "$2b$12$2a9tZmt6neHyHi76dMlFj.Ha5ZvYYqVnqzbZRa.lvbcB39waayfZO"
+          }
+        }
+      }
+    }
+  ]
+}

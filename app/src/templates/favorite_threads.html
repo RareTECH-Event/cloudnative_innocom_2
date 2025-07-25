@@ -1,0 +1,62 @@
+{% extends 'layout.html' %} {% block content%}
+
+<div
+  class="container mx-auto flex justify-between items-center px-8 h-14 w-4/5 bg-[#748EA0] fixed top-20 right-0 left-[20%] z-[1000]"
+>
+  <div class="flex items-center space-x-10">
+    <div class="space-x-4 flex items-center text-white">
+      <i class="fas fa-bookmark mr-4"></i>
+      <span class="text-2xl">ブックマークした投稿一覧</span>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col-reverse p-6 mb-16 mt-32">
+  <!-- Messages -->
+  {% for thread in favorite_threads %}
+  <div class="rounded p-4 mb-4 shadow flex hover:bg-[#E6EFF1]" id="thread_card">
+    <div
+      class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center mr-4"
+    >
+      <i class="fa fa-user fa-lg"></i>
+    </div>
+    <div class="flex flex-col justify-between w-full">
+      <div class="flex items-center">
+        <div>
+          <strong>{{ thread.user_name }}</strong>
+          <span class="text-gray-600 ml-2"
+            >{{ (thread.created_at)[5:-3] }}</span
+          >
+        </div>
+      </div>
+      <div class="flex flex-col items-start">
+        <div class="message my-2">
+          <p class="text-gray-600">{{ thread.message }}</p>
+        </div>
+        {% include '_thread_edit_form.html' %}
+      </div>
+      <div class="flex justify-end items-end space-x-4 mt-2">
+        <div class="icon-buttons flex text-cyan-950">
+          <form
+            action="{{ url_for('thread.thread_likes', thread_id=thread.thread_id) }}"
+            method="POST"
+          >
+            <button type="submit" class="like-button mr-4 opacity-70">
+              <i
+                class="far fa-heart {% if g.current_user.user_name in thread.likes %}fas{% endif %}"
+              ></i>
+            </button>
+          </form>
+          <button type="submit" class="bookmark-button mr-4 opacity-70">
+            <i
+              class="fa-bookmark fa-regular {% if thread.thread_id in g.current_user.favorite_threads %}fa-solid{% endif %}"
+            ></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

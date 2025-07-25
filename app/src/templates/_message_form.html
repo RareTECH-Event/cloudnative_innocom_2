@@ -1,0 +1,22 @@
+<div
+    class="flex flex-col items-start p-6 gap-4 rounded-lg fixed bottom-0 left-[20%] right-0 bg-[#E6EFF1]"
+  >
+    <form
+      id="message-form"
+      action="{{ url_for('thread.thread_register') }}"
+      method="POST"
+      class="flex items-center w-full"
+    >
+      <input
+        type="text"
+        name="message"
+        placeholder="コメントを入力"
+        class="flex-grow p-2 border border-gray-400 rounded mr-2"
+        required
+      />
+      <input type="hidden" name="channel_id" value="{{ channel.channel_id }}" />
+      <button type="submit" class="p-2 text-cyan-950" disabled>
+        <i class="fas fa-paper-plane fa-xl"></i>
+      </button>
+    </form>
+  </div>

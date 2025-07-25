@@ -1,0 +1,81 @@
+<div
+  class="bg-cyan-950 text-white h-screen px-5 py-6 fixed left-0 right-[80%] top-20"
+>
+  <div class="space-y-6 text-lg">
+    <div>
+      <h1 class="mx-auto p-2 font-bold mb-2">お気に入りチャンネル</h1>
+      <ul class="space-y-2 mb-16">
+        {% for channel in favorite_channels %}
+        <div>
+          {% if channel%}
+          <li class="sliderColumn">
+            <a
+              href="{{ url_for('channel.channel_detail', channel_id=channel.channel_id) }}"
+              class="flex items-center space-x-2 block w-full"
+            >
+              <span>
+                <i class="fas fa-star" style="color: #ffd600"></i>
+              </span>
+              <span class="">{{ channel.channel_name }}</span>
+            </a>
+          </li>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h1 class="mx-auto p-2 font-bold mb-2">チャンネル一覧</h1>
+      <ul class="">
+        {# {% for channel in channels %}
+        <div>
+          {% if channel %}
+          <li class="sliderColumn">
+            <a
+              href="{{ url_for('channel.channel_detail', channel_id=channel.channel_id) }}"
+              class="flex items-center space-x-2 block w-full"
+            >
+              {% if channel.is_private == "true" %}
+              <span class="text-base">
+                <i class="fas fa-lock"></i>
+              </span>
+              {% else %}
+              <i class="fas fa-lock-open"></i>
+              {% endif %}
+              <span class=""> {{ channel.channel_name }}</span>
+            </a>
+          </li>
+          {% endif %}
+        </div>
+
+        {% endfor %} #}
+        <a href="{{ url_for('channel.channel_register') }}" class="block w-full">
+          <li class="mt-6 font-bold sliderColumn">
+            <span class="text-base mr-2">
+              <i class="fas fa-plus-square"></i>
+            </span>
+            <span>チャンネル追加</span>
+          </li>
+        </a>
+      </ul>
+    </div>
+    <div class="fixed bottom-6 w-[295px]">
+      <div class="mb-4">
+        <a
+          href="{{ url_for('users.users') }}"
+          class="flex items-center sliderColumn block"
+        >
+          <h1>ユーザー一覧</h1>
+        </a>
+      </div>
+      <div>
+        <a
+          href="{{ url_for('thread.favorite_threads') }}"
+          class="flex items-center sliderColumn block"
+        >
+          <h1>お気に入りスレッド</h1>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+
+.sliderTitle {
+  @apply mx-auto p-2 font-normal text-base mb-2;
+}
+.sliderColumn {
+  @apply mx-auto p-2 text-base font-normal hover:bg-accent hover:text-main rounded;
+}
+
+@tailwind utilities;
+
+@layer base {
+  body {
+    @layer font-body;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "sessions": [
+    {
+      "PutRequest": {
+        "Item": {
+          "session_id": { "S": "17a0ac8a-dc9e-496b-8197-29d9fe445f9e" },
+          "user_name": { "S": "Smith" },
+          "expired_at": { "N": "2000000000" }
+        }
+      }
+    }
+  ]
+}

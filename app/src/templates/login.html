@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- tailwindCSSのUIを読み込む -->
+    <link
+      href="{{ url_for('static', filename='output.css') }}"
+      rel="stylesheet"
+    />
+    <!-- google fontのUIを読み込む -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>ログイン</title>
+  </head>
+  <main>
+    <!-- デプロイテスト -->
+
+    <div class="fixed text-center font-bold text-xl pt-4 left-0 right-0 top-0">
+    </div>
+
+    <!-- デプロイテスト -->
+    <div class="min-h-screen flex items-center justify-center">
+      <div class="bg-[#E6EFF1] py-16 px-24 rounded w-full md:w-2/5 space-y-10">
+        <div class="text-center">
+          <p class="text-sm mb-4" style="font-family: 'Zen Dots'">
+            CloudNativeEX
+          </p>
+          <h1 class="text-3xl font-bold">ログイン</h1>
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %}
+        <div
+          class="rounded bg-red-200 border-red-500 text-red-900 border-l-4 p-4 mb-4"
+          role="alert"
+        >
+          <p>{{ message }}</p>
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+        <form
+          action="{{ url_for('auth.login') }}"
+          method="post"
+          class="space-y-6"
+        >
+          <div class="mb-4">
+            <label class="block mb-1 text-textColor text-sm font-normal"
+              >ユーザーネーム</label
+            >
+            <input
+              type="username"
+              name="username"
+              placeholder="メールアドレスを入力"
+              required
+              class="w-full border border-gray-300 rounded py-2 px-4 focus:outline-none focus:border-[#2064F7]"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block mb-1 text-textColor text-sm font-normal"
+              >パスワード</label
+            >
+            <input
+              type="password"
+              name="password"
+              placeholder="パスワードを入力"
+              required
+              class="w-full border border-gray-300 rounded py-2 px-4 focus:outline-none focus:border-[#2064F7]"
+            />
+          </div>
+          <div class="justify-between items-center w-full mt-12">
+            <button
+              type="submit"
+              class="bg-main hover:bg-hover text-xl font-medium text-white py-2 px-4 rounded w-full mb-4"
+            >
+              ログイン
+            </button>
+            <div class="text-sm justify-center flex">
+              <p>アカウントの作成は</p>
+              <a
+                href="{{ url_for('auth.user_register') }}"
+                class="text-[#2064F7]"
+                >こちら</a
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</html>

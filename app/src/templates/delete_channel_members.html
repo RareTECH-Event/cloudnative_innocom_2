@@ -1,0 +1,54 @@
+{% extends 'layout.html' %} {% block content%}
+
+<div class="flex flex-col w-full bg-white">
+  {% include '_channel_nav.html' %}
+  <div class="container mx-auto px-8 py-36">
+    <h1
+      class="text-start text-xl font-medium mb-6 px-2 py-2 border-b-2 border-b-hover"
+    >
+      ユーザーを削除する
+    </h1>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+    >
+      {% for user in members %}
+      <div class="w-auto p-10 rounded-lg bg-[#E6EFF1]">
+        <div class="flex flex-col space-y-3">
+          <div class="space-y-4">
+            <div
+              class="w-24 h-24 mx-auto rounded-full bg-gray-300 flex items-center justify-center"
+            >
+              <i class="fa fa-user fa-2xl"></i>
+            </div>
+            <div class="text-center">
+              <h2 class="font-bold text-lg">{{ user.user_name }}</h2>
+            </div>
+          </div>
+
+          <form
+            action="{{ url_for('channel.delete_channel_member', channel_id=channel.channel_id) }}"
+            method="POST"
+            class="flex justify-center"
+          >
+            <input
+              type="hidden"
+              name="user_name"
+              value="{{ user.user_name }}"
+            />
+            {% if user.user_name != owner %}
+            <button
+              type="submit"
+              class="rounded-lg bg-main px-8 py-2 text-white text-sm hover:bg-hover items-center"
+            >
+              削除
+            </button>
+            {% endif %}
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

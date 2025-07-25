@@ -1,0 +1,301 @@
+{
+  "threads": [
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "9beb1538-315c-4591-b9d9-fd12ee7d2efa"
+          },
+          "created_at": {
+            "S": "2023-05-21 22:36:48"
+          },
+          "message": {
+            "S": "はじめまして。Smithと申します。よろしくお願いします。"
+          },
+          "channel_id": {
+            "S": "4ab0e061-402a-4b9c-95ef-3eb7838bbf07"
+          },
+          "user_name": {
+            "S": "Smith"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "5bc9bd1e-164b-4744-af0e-5765727e856b"
+          },
+          "created_at": {
+            "S": "2023-05-21 22:39:57"
+          },
+          "message": {
+            "S": "はじめまして。Johnsonです。よろしくお願いします。"
+          },
+          "channel_id": {
+            "S": "4ab0e061-402a-4b9c-95ef-3eb7838bbf07"
+          },
+          "user_name": {
+            "S": "Johnson"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "53d985ec-1ede-4087-9c7b-f8a70c1cc683"
+          },
+          "created_at": {
+            "S": "2023-05-21 22:40:07"
+          },
+          "message": {
+            "S": "Williamsさんがマネージャーなので、何かありましたらWilliamsさんにご連絡ください。"
+          },
+          "channel_id": {
+            "S": "4ab0e061-402a-4b9c-95ef-3eb7838bbf07"
+          },
+          "user_name": {
+            "S": "Johnson"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "a6e4d2dd-e4da-4d9e-9742-a60b35f4f12b"
+          },
+          "created_at": {
+            "S": "2023-05-21 22:40:37"
+          },
+          "message": {
+            "S": "承知しました。ありがとうございます。"
+          },
+          "channel_id": {
+            "S": "4ab0e061-402a-4b9c-95ef-3eb7838bbf07"
+          },
+          "user_name": {
+            "S": "Smith"
+          }
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "e58636e4-5034-49f3-9e2b-ad0b0ab650dd"
+          },
+          "created_at": {
+            "S": "2023-05-21 22:49:26"
+          },
+          "message": {
+            "S": "お疲れ様です。今週の金曜日の飲み会はどこでしたっけ？"
+          },
+          "channel_id": {
+            "S": "25d02915-38e7-4631-967b-1b35396718b4"
+          },
+          "user_name": {
+            "S": "Williams"
+          }
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "75160772-50c2-402f-b1b8-dc3146130afa"
+          },
+          "created_at": {
+            "S": "2023-05-21 22:49:56"
+          },
+          "message": {
+            "S": "渋谷の〇〇ビル B1階の 〇〇というお店です。"
+          },
+          "channel_id": {
+            "S": "25d02915-38e7-4631-967b-1b35396718b4"
+          },
+          "user_name": {
+            "S": "Brown"
+          }
+        }
+      }
+    },
+
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "83f5e0ff-f20a-4ba8-8ad9-ca5abec9bed1"
+          },
+          "created_at": {
+            "S": "2023-05-21 22:50:30"
+          },
+          "message": {
+            "S": "ありがとうございます。そのお店、行ったことあります！ローストビーフが美味しかったです。"
+          },
+          "channel_id": {
+            "S": "25d02915-38e7-4631-967b-1b35396718b4"
+          },
+          "user_name": {
+            "S": "Williams"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "0b47f737-72f3-4d58-9330-f45077bab157"
+          },
+          "created_at": {
+            "S": "2023-05-21 22:51:09"
+          },
+          "message": {
+            "S": "そうなんですね。ローストビーフ好きなので、楽しみです！"
+          },
+          "channel_id": {
+            "S": "25d02915-38e7-4631-967b-1b35396718b4"
+          },
+          "user_name": {
+            "S": "Brown"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "b4b17ea5-65d5-46e1-8bb1-bd14ff3c771d"
+          },
+          "created_at": {
+            "S": "2023-05-21 22:51:38"
+          },
+          "message": {
+            "S": "はい！楽しみにしててください。"
+          },
+          "channel_id": {
+            "S": "25d02915-38e7-4631-967b-1b35396718b4"
+          },
+          "user_name": {
+            "S": "Williams"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "c1affb4a-9b4e-4527-a901-577c00a8dac4"
+          },
+          "created_at": {
+            "S": "2023-05-21 22:59:44"
+          },
+          "message": {
+            "S": "お誕生日おめでとうございます！良い1年をお過ごしください。"
+          },
+          "channel_id": {
+            "S": "98e6147c-d2af-4f30-837f-ff257b00be6d"
+          },
+          "user_name": {
+            "S": "Smith"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "a7d399a6-6b8b-409a-a45c-cd0e49a31770"
+          },
+          "created_at": {
+            "S": "2023-05-21 23:00:03"
+          },
+          "message": {
+            "S": "ありがとうございます！嬉しいです。"
+          },
+          "channel_id": {
+            "S": "98e6147c-d2af-4f30-837f-ff257b00be6d"
+          },
+          "user_name": {
+            "S": "Jones"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "c0b66ca7-03bc-4550-bb35-ea95f7e88908"
+          },
+          "created_at": {
+            "S": "2023-05-21 23:00:23"
+          },
+          "message": {
+            "S": "プレゼントを贈りたいのですが、何が欲しいですか？"
+          },
+          "channel_id": {
+            "S": "98e6147c-d2af-4f30-837f-ff257b00be6d"
+          },
+          "user_name": {
+            "S": "Smith"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "4ccc8b44-63e6-455c-aaaa-2a80576d2ec6"
+          },
+          "created_at": {
+            "S": "2023-05-21 23:00:43"
+          },
+          "message": {
+            "S": "いいんですか！？今はキャンプにハマっているので、キャンプグッズが欲しいです。"
+          },
+          "channel_id": {
+            "S": "98e6147c-d2af-4f30-837f-ff257b00be6d"
+          },
+          "user_name": {
+            "S": "Jones"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "thread_id": {
+            "S": "0c44e789-7012-45d7-b191-505572b0c5db"
+          },
+          "created_at": {
+            "S": "2023-05-21 23:01:05"
+          },
+          "message": {
+            "S": "了解です。いい商品探しておきますね！"
+          },
+          "channel_id": {
+            "S": "98e6147c-d2af-4f30-837f-ff257b00be6d"
+          },
+          "user_name": {
+            "S": "Smith"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+<div
+  class="container mx-auto flex justify-between items-center px-8 h-14 w-4/5 bg-[#748EA0] fixed top-20 right-0 left-[20%] z-[1000]"
+>
+  <div class="flex items-center space-x-10">
+    <form
+      action="{{ url_for('channel.channel_favorite', channel_id=channel.channel_id) }}"
+      method="POST"
+    >
+      <button class="rounded-full p-2" type="submit">
+        <!-- もしユーザーのお気に入りチャンネルに現在のチャンネルが含まれていたら、塗り潰しのスターを表示する -->
+        <i
+          class="fa-star fa-regular {% if channel.channel_id in g.current_user.favorite_channels %}fa-solid{% endif %}"
+          style="color: #ffd600"
+        ></i>
+      </button>
+    </form>
+    <div class="space-x-4 flex items-center text-white">
+      {% if channel %} {% if channel.is_private == "true" %}
+      <span class="">
+        <i class="fas fa-lock fa-lg"></i>
+      </span>
+      {% else %}
+      <span>
+        <i class="fas fa-lock-open fa-lg"></i>
+      </span>
+      {% endif %}
+      <span class="text-2xl"> {{ channel.channel_name }}</span>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="flex items-center space-x-4">
+    <form
+      action="{{ url_for('channel.add_channel_member', channel_id=channel.channel_id) }}"
+      method="GET"
+    >
+      <button class="" type="submit">
+        <i class="fas fa-user-plus text-white"></i>
+      </button>
+    </form>
+    <form
+      action="{{ url_for('channel.delete_channel_member', channel_id=channel.channel_id) }}"
+      method="GET"
+    >
+      <button class="" type="submit">
+        <i class="fas fa-user-minus text-white"></i>
+      </button>
+    </form>
+    <form
+      action="{{ url_for('channel.channel_edit', channel_id=channel.channel_id) }}"
+      method="GET"
+    >
+      <button class="" type="submit">
+        <i class="fas fa-edit text-white"></i>
+      </button>
+    </form>
+    <button id="delete-channel-button">
+      <i class="fas fa-trash-alt text-white"></i>
+    </button>
+    {% include '_channel_delete_modal.html' %}
+  </div>
+</div>

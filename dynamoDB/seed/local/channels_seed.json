@@ -1,0 +1,37 @@
+{
+  "channels": [
+    {
+      "PutRequest": {
+        "Item": {
+          "channel_id": { "S": "4ab0e061-402a-4b9c-95ef-3eb7838bbf07" },
+          "channel_name": { "S": "general" },
+          "description": { "S": "全体" },
+          "is_private": { "S": "false" },
+          "members": { "SS": ["Smith", "Johnson"] }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "channel_id": { "S": "25d02915-38e7-4631-967b-1b35396718b4" },
+          "channel_name": { "S": "random" },
+          "description": { "S": "雑談" },
+          "is_private": { "S": "false" },
+          "members": { "SS": ["Williams", "Brown"] }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "channel_id": { "S": "98e6147c-d2af-4f30-837f-ff257b00be6d" },
+          "channel_name": { "S": "private" },
+          "description": { "S": "プライベート" },
+          "is_private": { "S": "true" },
+          "members": { "SS": ["Smith", "Jones"] }
+        }
+      }
+    }
+  ]
+}
