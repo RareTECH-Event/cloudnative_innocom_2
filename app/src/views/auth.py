@@ -65,11 +65,12 @@ def user_register():
             return render_template("register.html")
 
         # passwordをハッシュ化
-        hashed_password = password
+        hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
 
         user = User(
             user_name=user_name,
             password=hashed_password,
+            profile_image_url="hoge",
         )
         user.save()
         return redirect(url_for("auth.login"))
