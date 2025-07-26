@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 threadBp = Blueprint("thread", __name__, url_prefix="/threads")
 
 
-@threadBp.route("/register", methods=["GET", "POST"])
+@threadBp.route("/register", methods=["POST"])
 @session_required
 def thread_register():
     thread_id = str(uuid.uuid4())
@@ -21,9 +21,6 @@ def thread_register():
     if request.method == "POST":
         message = request.form["message"]
         channel_id = request.form["channel_id"]
-    else: # GET
-        message = request.args.get("message", "GET Request Test")
-        channel_id = request.args.get("channel_id")
 
     if not channel_id:
         flash("チャンネルIDが指定されていません。", "error")
