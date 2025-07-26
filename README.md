@@ -19,8 +19,8 @@
 
 1.  **リポジトリをクローンします。**
     ```bash
-    git clone https://github.com/ikemura-ren/cloudnative-innocom.git
-    cd cloudnative-innocom
+    git clone git@github.com:RareTECH-Event/cloudnative_innocom_2.git
+    cd cloudnative-innocom2
     ```
 
 2.  **Dockerコンテナを起動します。**
