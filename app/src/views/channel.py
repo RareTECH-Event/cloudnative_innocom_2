@@ -56,7 +56,7 @@ def channel_register():
 
         channel.save()
         flash("チャンネルを作成しました", "success")
-        return redirect(url_for("channel.channel_detail", channel_pk=channel_id))
+        return redirect(url_for("channel.channel_detail", channel_id=channel_id))
 
 
 @channelBp.route("/<channel_id>/edit", methods=["GET", "POST"])
