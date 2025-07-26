@@ -26,8 +26,8 @@
     </div>
     <div>
       <h1 class="mx-auto p-2 font-bold mb-2">チャンネル一覧</h1>
-      <ul class="">
-        {# {% for channel in channels %}
+      <ul class="space-y-2 mb-16">
+        {% for channel in channels %}
         <div>
           {% if channel %}
           <li class="sliderColumn">
@@ -48,7 +48,7 @@
           {% endif %}
         </div>
 
-        {% endfor %} #}
+        {% endfor %}
         <a href="{{ url_for('channel.channel_register') }}" class="block w-full">
           <li class="mt-6 font-bold sliderColumn">
             <span class="text-base mr-2">
