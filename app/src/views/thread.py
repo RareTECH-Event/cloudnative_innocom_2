@@ -4,7 +4,8 @@ from helpers.auth import session_required
 from src.models.channel import Channel
 from src.models.thread import Thread
 from src.models.user import User
-import datetime
+from datetime import datetime, timedelta
+
 
 threadBp = Blueprint("thread", __name__, url_prefix="/threads")
 
@@ -14,7 +15,7 @@ threadBp = Blueprint("thread", __name__, url_prefix="/threads")
 def thread_register():
     thread_id = str(uuid.uuid4())
     # プラス9時間することで日本時間にしたい
-    created_at = (datetime.datetime(2024, 1, 1, 12, 30, 0)).strftime(
+    created_at = (datetime.now() + timedelta(hours=9)).strftime(
         "%Y-%m-%d %H:%M:%S"
     )
     if request.method == "POST":
