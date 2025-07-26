@@ -20,7 +20,7 @@
 1.  **リポジトリをクローンします。**
     ```bash
     git clone git@github.com:RareTECH-Event/cloudnative_innocom_2.git
-    cd cloudnative-innocom
+    cd cloudnative-innocom2
     ```
 
 2.  **Dockerコンテナを起動します。**
